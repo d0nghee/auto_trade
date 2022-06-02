@@ -10,11 +10,8 @@ def cal_target(ticker) :
     target = today['open'] + y_range * 0.5
     return target
 
-login = open('upbit_key.txt')
-lines = login.readlines()
-access_key = lines[0].strip()
-secret_key = lines[1].strip()
-login.close()
+access_key = "input"
+secret_key = "input"
 upbit = pyupbit.Upbit(access_key, secret_key)
 
 
@@ -45,7 +42,7 @@ while True :
     # 매수
     if oper is True and coin is False and now_price >= target :
         krw = upbit.get_balance('KRW')
-        upbit.buy_market_order('KRW-BTC', krw) # 비율 설정 ex)krw * k
+        upbit.buy_market_order('KRW-BTC', krw) # 비율 설정 ex)krw * n
         coin = True
         print('******************매수*******************')
     
